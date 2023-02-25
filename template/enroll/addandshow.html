@@ -1,0 +1,213 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center alert alert-info">Add Accreditation Data</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+
+
+    <div class="col-sm-7 offset-1">
+        <h4 class="text-center alert alert-info">Show Accreditation Data</h4>
+
+        {% if stu %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Accreditation_Id</th>
+                    <th scope="col">Hatchery_ID</th>
+                    <th scope="col">Accreditation_Agency</th>
+                    <th scope="col">Term</th>
+                    <th scope="col">Year_of_Accrrediation</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for st in stu %}                                     
+                        <tr>
+                            <th scope="row">{{st.accreditation_id}}</th>
+                            <td>{{st.hatchery_id}}</td>
+                            <td>{{st.accreditation_agency}}</td>
+                            <td>{{st.term}}</td>
+                            <td>{{st.year_of_accreditation}}</td>
+                            <td>
+                            <a href="#" class="btn btn-warning btn-sm d-inline">Edit</a>
+                            <form action="{% url 'deletedata' st.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <h4 class="text-center alert alert-warning">No Records</h4>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Accreditation Data</title>
+
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <style>
+            * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html{
+    
+    background-image: url('sea1.jpg');
+     background-size: cover;
+
+}
+
+.container{
+    border-color: white;
+    padding-top: 10%;
+   
+    
+}
+.main-container
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px 10px;
+    font-size:14pt;
+    background-image: url('sea1.jpg') ;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    width:500px;
+    padding: 50px;
+    margin: auto;
+    border: 5px solid white;
+    border-radius: 20px;
+    box-shadow:2px 2px 6px 6px #171A2B ;
+    text-align: center;
+}
+
+.heading{
+    text-align: center;
+    color:rgba(224, 234, 238, 0.937);
+}
+
+
+h1{
+    font-size: 35px;
+}
+
+.labels
+{
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:aliceblue;
+    width: 5000px;
+}
+
+.text,.number
+{
+    align-content: center;
+    background:blue
+    height: 25px;
+    width: 200px;
+    text-align: center;
+    font-size: 18px;
+    border: 3px solid green;
+
+}
+
+.submit
+{
+    height: 25px;
+    width: 200px;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    margin: 0;
+    position: absolute;
+    background: yellowgreen;
+
+    
+}
+#submit-bt:hover
+{
+    color: rgb(240, 226, 226);
+    background:blue;
+    border: none;
+    border-radius: 20px;
+}
+        </style>
+        
+
+    </head>
+    <body class="container">     
+        <h1 class="heading"><u><strong>Accreditation Data</strong></u></h1><br>   
+        <form>
+        <div class="main-container"> 
+                       
+                <div>                 
+                    <label class="labels">Accreditation_Id:</label>
+                    <input type="number" class="number" id="acc_id" name="acc_id" placeholder="Accreditation_Id"/>
+                    
+                    
+                </div>
+                <div>
+                    <label class="labels">Hatchery_ID:</label>
+                    <input type="text" class="text" id="hat_id" name="hat_id" placeholder="Hatchery_ID"/>
+                </div>  
+                <div>
+                    <label class="labels">Accreditation_Agency:</label>
+                    <input type="text" class="text" id="Acc_Agency" name="Acc_Agency" placeholder="Accreditation_Agency"/>
+                    
+                </div>    
+                <div>
+                    <label class="labels">Term:</label>
+                    <input type="number" class="number" id="term" name="term" placeholder="Term"/>
+                </div>          
+                <div>
+                    
+                    <label class="labels">Year_of_Accrrediation:</label>
+                    <input type="text" class="text" id="year_acc" name="year_acc" placeholder="Year_of_Accrrediation"/>
+                    
+                </div><br>
+                
+                <div>
+                    <input type="submit" class="submit" id="submit-bt" name="submit-bt" value="Add Data"/> 
+                </div>  <br>           
+                
+            </div>
+            <br>
+                  
+        </form>
+        
+
+    </body>
+</html>-->
+
+

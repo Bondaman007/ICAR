@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login</title> 
+    <link rel="stylesheet" type="text/css" href="{% static 'loginpage.css' %}">
+  
+  </head>
+  <body>
+      <section>
+        <div class="jumbotron text-center" style="background-color: lightblue;">
+          <h1 class="display-4" style="color: white;">ICAR BANNER</h1>
+        </div>
+        <header>
+          <div class="navigation">
+            <a href="mainpage.html">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
+            <a href="#">Contact Us</a>
+        </div>
+        </header>
+            <div class="login-container">
+              <h2>Admin Login</h2><br><br>
+              <form>
+                  <div class="user-box">
+                      <input type="text" id="user_id" name="user_id" required="">
+                      <label>Username</label>
+                  </div>
+  
+                  <div class="user-box">
+                      <input type="password" id="user_password" name="user_password" required="">
+                      <label>Password</label>
+                  </div>
+  
+                  <a href="#">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      Submit
+                  </a>
+              </form>
+              
+          </div>
+            
+      </section>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sale Data</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
+        <style>
+            .main-container{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+
+            html{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+        </style>
+
+    </head>
+    <body class="container">     
+        <h1 class="heading"><u><strong>Sale Data</strong></u></h1><br>   
+        <form>
+        <div class="main-container"> 
+                       
+                <div>                 
+                    <label class="labels">Hatechary_Id:</label>
+                    <input type="number" class="number" id="hat_id" name="hat_id" placeholder="Hatechary_Id"/>
+                    
+                    
+                </div>
+                <div>
+                    <label class="labels">Spawn_Sale_Year:</label>
+                    <input type="text" class="text" id="spawn_sale" name="spawn_sale placeholder="Spawn_Sale_Year"/>
+                </div>  
+                <div>
+                    <label class="labels">Fry_Sale_Year:</label>
+                    <input type="text" class="text" id="fry_sale" name="fry_sale" placeholder="Fry_Sale_Year"/>
+                    
+                </div>    
+                <div>
+                    <label class="labels">Fingerling_Sale_Year:</label>
+                    <input type="number" class="number" id="fingerling_sale" name="fingerling_sale" placeholder="Fingerling_Sale_Year"/>
+                </div>
+                <div>
+                    <label class="labels">Yearling_Sale_Year:</label>
+                    <input type="number" class="number" id="c_yearling" name="c_yearling" placeholder="Cost_Yearling"/>
+                </div>
+                <div>
+                    <label class="labels">Species_ID:</label>
+                    <input type="number" class="number" id="species_ID" name="Species_ID" placeholder="Species_ID"/>
+                </div>
+                
+                <div>
+                    <input type="submit" class="submit" id="submit-bt" name="submit-bt" value="Add Data"/> 
+                </div>         
+                
+            </div>
+            <br>
+                  
+        </form>
+        
+
+    </body>
+</html>

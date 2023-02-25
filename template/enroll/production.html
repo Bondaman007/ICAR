@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Production Data</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
+        <style>
+            .main-container{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+
+            html{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+        </style>
+    </head>
+    <body class="container">     
+        <h1 class="heading"><u><strong>Production Data</strong></u></h1><br>   
+        <form>
+        <div class="main-container"> 
+                       
+                <div>                 
+                    <label class="labels">Production_ID:</label>
+                    <input type="number" class="number" id="pro_id" name="pro_id" placeholder="Production_ID"/>
+                    
+                    
+                </div>
+                <div>
+                    <label class="labels">Production_Seed_Type:</label>
+                    <input type="text" class="text" id="pro_type" name="pro_type" placeholder="Production_Seed_Type"/>
+                </div>  
+                <div>
+                    <label class="labels">Broodstock_ID:</label>
+                    <input type="text" class="text" id="brood_id" name="brood_id" placeholder="Broodstock_ID"/>
+                    
+                </div>    
+                <div>
+                    <label class="labels">No_Ponds_Mgt:</label>
+                    <input type="number" class="number" id="no_ponds_mgt" name="no_ponds_mgt" placeholder="No_Ponds_Mgt"/>
+                </div>          
+                <div>
+                    
+                    <label class="labels">Tech_Seed_Production:</label>
+                    <input type="text" class="text" id="tech_pro" name="tech_pro" placeholder="Tech_Seed_Production"/>
+                    
+                </div>
+                <div>
+                    <label class="labels">Seed_Production_Year:</label>
+                    <input type="text" class="text" id="seed_pro_year" name="seed_pro_year" placeholder="Seed_Production_Year"/>
+                </div>
+                <div>
+                    <label class="labels">Mgt_Procedures:</label>
+                    <input type="number" class="number" id="Mgt_Pro" name="Mgt_Pro" placeholder="Mgt_Procedures"/>
+                                        
+                </div><br>
+                
+               
+                <div>
+                    <input type="submit" class="submit" id="submit-bt" name="submit-bt" onclick="alert('Data Saved')" value="Add Data"/> 
+                </div>             
+                
+            </div>
+            <br>
+                  
+        </form>
+        
+
+    </body>
+</html>

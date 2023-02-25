@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login</title> 
+    <link rel="stylesheet" type="text/css" href="{% static 'loginpage.css' %}">
+  
+  </head>
+  <body>
+      <section>
+        <div class="jumbotron text-center" style="background-color: lightblue;">
+          <h1 class="display-4" style="color: white;">ICAR BANNER</h1>
+        </div>
+        <header>
+          <div class="navigation">
+            <a href="mainpage.html">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Admin Login</a>
+            <a href="#">Contact Us</a>
+        </div>
+        </header>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+            <div class="login-container">
+              <h2>Login</h2><br><br>
+              <form action="/loginpage" method="post">
+                {% csrf_token %}
+                  <div class="user-box">
+                      <input type="text" id="username" name="username" required="">
+                      <label>Username</label>
+                  </div>
+  
+                  <div class="user-box">
+                      <input type="password" id="pass1" name="pass1" required="">
+                      <label>Password</label>
+                  </div>
+  
+                  <a href="#">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      Log In
+                  </a>
+                  <button type="submit"> Log In </button>               <!-- Checking -->
+              </form>
+              
+          </div>
+            
+      </section>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>Signup</title>
+
+    <style>
+      body{
+        background-image: url('{% static "/images/sea1.png" %}' );
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:fit-content;
+        width:auto;
+      }
+
+
+        .container{
+            background: rgb(216, 240, 245);
+            margin-top: 2%;
+            margin-left: 10%;
+            margin-bottom: 2%;
+            padding: 20px;
+            width: 35%;
+            border-radius: 4%;
+        }
+        section{
+    position: relative;
+    width: 100%;
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    background: no repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header{
+  background:rgb(120, 216, 233) ;
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+header .navigation a{
+    color: #010a04;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+header .navigation a:not(:last-child){
+    margin-right:30px;
+}
+
+header .navigation a:hover{
+    background:white;
+}
+
+    </style>
+  </head>
+  <body>
+    <section">
+        <div class="jumbotron text-center" style="background-color: lightblue;">
+          <h1 class="display-4" style="color: white;">ICAR BANNER</h1>
+        </div>
+        <header>
+          <div class="navigation">
+            <a href="mainpage.html">Home</a>
+            <a href="#">Log In</a>
+            <a href="signuppage.html">Sign Up</a>
+            <a href="adminloginpage.html">Admin Login</a>
+            <a href="#">Contact Us</a>
+        </div>
+        </header>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        <div class="container">
+            <h1 class="text-center my-5">Signup Form</h1>
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <form action="#" method="POST">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <label for="">Username*</label>
+                      <input type="text" class="form-control" name="username" placeholder="Enter your User_Id">
+                    </div>
+                  <div class="form-group">
+                    <label for="">First Name*</label>
+                    <input type="text" class="form-control" name="fname" placeholder="Enter your first name">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Last Name*</label>
+                    <input type="text" class="form-control" name="lname" placeholder="Enter your last name">
+                  </div>
+                  <div>
+                    <label for="">Gender:</label><br>
+                        <select name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        </select>
+                  </div><br>
+                  <div class="form-group">
+                    <label for="">Email*</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Phone*</label>
+                      <input type="text" class="form-control" name="phone" placeholder="Enter your Phone Number">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Organization*</label>
+                      <input type="text" class="form-control" name="organization" placeholder="Organization name">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Department Name*</label>
+                      <input type="text" class="form-control" name="dept" placeholder="Department name">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Designation*</label>
+                      <input type="text" class="form-control" name="designation" placeholder="Designation">
+                    </div>
+                  <div class="form-group">
+                    <label for="">Password*</label>
+                    <input type="password" class="form-control" name="pass1" placeholder="Enter your password">
+                    <ul>
+                      <li>Your password con't be too similar to your other personal information.</li>
+                      <li>Your password must contain at least 8 characters.</li>
+                      <li>Your password can't be a commonly used password.</li>
+                      <li>Your password can't be entirely number</li>
+                    </ul>
+                  </div>
+                  <div class="form-group">
+                      <label for="">Password Confirmation*</label>
+                      <input type="password" class="form-control" name="pass2" placeholder="Password Confirmation">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->  
+      </section>
+</html>

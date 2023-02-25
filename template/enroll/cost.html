@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cost Data</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
+        <style>
+            .main-container{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+
+            html{
+                background-image: url('{% static "sea2.jpg" %}');
+            }
+        </style>
+
+    </head>
+    <body class="container">     
+        <h1 class="heading"><u><strong>Cost Data</strong></u></h1><br>   
+        <form>
+        <div class="main-container"> 
+                       
+                <div>                 
+                    <label class="labels">Hatechary_Id:</label>
+                    <input type="number" class="number" id="hat_id" name="hat_id" placeholder="Hatechary_Id"/>
+                    
+                    
+                </div>
+                <div>
+                    <label class="labels">Cost_Spawn:</label>
+                    <input type="text" class="text" id="c_spawn" name="c_spawn" placeholder="Cost_Spawn"/>
+                </div>  
+                <div>
+                    <label class="labels">Cost_Fry:</label>
+                    <input type="text" class="text" id="c_fry" name="c_fry" placeholder="Cost_Fry"/>
+                    
+                </div>    
+                <div>
+                    <label class="labels">Cost_Fingerling:</label>
+                    <input type="number" class="number" id="c_fingerling" name="c_fingerling" placeholder="Cost_Fingerling"/>
+                </div>
+                <div>
+                    <label class="labels">Cost_Yearling:</label>
+                    <input type="number" class="number" id="c_yearling" name="c_yearling" placeholder="Cost_Yearling"/>
+                </div><br>
+
+                
+                <div>
+                    <input type="submit" class="submit" id="submit-bt" name="submit-bt" value="Add Data"/> 
+                </div>         
+                
+            </div>
+            <br>
+                  
+        </form>
+        
+
+    </body>
+</html>
