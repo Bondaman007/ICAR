@@ -15,5 +15,6 @@ urlpatterns = [
     path('insert_species', views.insert_species, name="species"),
     path('insert_cost', views.insert_cost, name="cost"),
     path('addandshow',views.add_show, name="addandshow"),
-    path('delete/<int:id>/', views.delete_data, name="deletedata")
+    path('delete/<int:id>/', views.delete_data, name="deletedata"),
+    path('/<int:id>/', views.update_data, name="updatedata")
 ]
