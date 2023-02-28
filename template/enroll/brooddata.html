@@ -2,13 +2,12 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-sm-7">
+    <div style="margin-left: -35%;background-color: rgb(240, 234, 226);" >
         <h4 class="text-center alert alert-info">Show Broodstock Data</h4>
-
         {% if btu %}
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr style="color: rgb(9, 10, 9);">
                         <th scope="col">Id</th>
                         <th scope="col">Hatchery_id</th>
                         <th scope="col">Broodstock_Type</th>
@@ -23,21 +22,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for st in btu %}                                     
+                    {% for bt in btu %}                                     
                         <tr>
-                            <th scope="row">{{st.id}}</th>
-                            <td>{{st.hatchery_id}}</td>
-                            <td>{{st.broodstock_type}}</td>
-                            <td>{{st.name_broodstock}}</td>
-                            <td>{{st.mgt_procedure_broodstock}}</td>
-                            <td>{{st.no_ponds_broodstock}}</td>
-                            <td>{{st.no_spawn_produce}}</td>
-                            <td>{{st.species_id}}</td>
-                            <td>{{st.no_fry_producing}}</td>
-                            <td>{{st.no_nursery_ponds}}</td>
+                            <th scope="row">{{bt.id}}</th>
+                            <td>{{bt.hatchery_id}}</td>
+                            <td>{{bt.broodstock_type}}</td>
+                            <td>{{bt.name_broodstock}}</td>
+                            <td>{{bt.mgt_procedure_broodstock}}</td>
+                            <td>{{bt.no_ponds_broodstock}}</td>
+                            <td>{{bt.no_spawn_produce}}</td>
+                            <td>{{bt.species_id}}</td>
+                            <td>{{bt.no_fry_producing}}</td>
+                            <td>{{bt.no_nursery_ponds}}</td>
                             <td>
-                            <a href="{% url 'updatedata' st.id %}" class="btn btn-warning btn-sm ">Edit</a>
-                            <form action="{% url 'deletedata' st.id %}" method="post">
+                            <a href="{% url 'updatebrooddata' bt.id %}" class="btn btn-warning btn-sm ">Edit</a>
+                            <form action="{% url 'deletebrooddata' bt.id %}" method="post" class="d-inline">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
@@ -50,7 +49,6 @@
         {% else %}
             <h4 class="text-center alert alert-warning">No Records</h4>
         {% endif %}
-
     </div>
 </div>
 

@@ -11,8 +11,6 @@ from .models import broodstock
 def datapage(request):
     return render(request,'enroll/datapage.html')
 
-def brood_data(request):
-    return render(request,'enroll/brooddata.html')
 
 # This Function will add new item and show all items
 def add_show(request):
@@ -32,6 +30,18 @@ def add_show(request):
     stud = User.objects.all()
     return render(request, 'enroll/addandshow.html', {'form':fm, 'stu':stud})
 
+def brood_data(request):
+    if request.method == 'POST':
+        bs = BroodstockRegistration(request.POST)
+        if bs.is_valid():
+            bs.save()
+            bs = BroodstockRegistration()
+    else:
+        bs = BroodstockRegistration()
+    btud = broodstock.objects.all()
+    return render(request, 'enroll/brooddata.html', {'form':bs, 'btu':btud})
+
+
 def brood_show(request):
     if request.method == 'POST':
         bs = BroodstockRegistration(request.POST)
@@ -40,20 +50,28 @@ def brood_show(request):
             bs = BroodstockRegistration()
     else:
         bs = BroodstockRegistration()
-    brood = broodstock.objects.all()
-    return render(request, 'enroll/brood.html', {'form':bs, 'btu':brood})
+    btud = broodstock.objects.all()
+    return render(request, 'enroll/brood.html', {'form':bs, 'btu':btud}) 
 
-        
+# This Function will Delete Brood Data
+def deletebrood_data(request,id):
+    if request.method == 'POST':
+        bi = broodstock.objects.get(pk=id)
+        bi.delete()
+        return HttpResponseRedirect('/')
 
-        
+# This Function will Update/Edit
 
-
-
-
-
-
-
-
+def updatebrood_data(request, id):
+    if request.method == 'POST':
+        bi = broodstock.objects.get(pk=id)
+        bs = BroodstockRegistration(request.POST, instance=bi)
+        if bs.is_valid():
+            bs.save()
+    else:
+        bi = broodstock.objects.get(pk=id)
+        bs = BroodstockRegistration(instance=bi)
+    return render(request, 'enroll/updatebrood.html',{'form':bs})
 
 
 # This Function will Delete

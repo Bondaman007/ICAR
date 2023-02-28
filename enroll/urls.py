@@ -17,6 +17,8 @@ urlpatterns = [
     path('addandshow',views.add_show, name="addandshow"),
     path('brood',views.brood_show, name="broodshow"),
     path('brooddata',views.brood_data, name="brooddata"),
+    path('<int:id>/', views.updatebrood_data, name="updatebrooddata"),
+    path('delete/<int:id>/', views.deletebrood_data, name="deletebrooddata"),
     path('delete/<int:id>/', views.delete_data, name="deletedata"),
-    path('/<int:id>/', views.update_data, name="updatedata")
+    path('<int:id>/', views.update_data, name="updatedata")
 ]
