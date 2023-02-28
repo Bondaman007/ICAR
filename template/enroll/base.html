@@ -13,20 +13,36 @@
             section{
                 background-image: url('{% static "/images/sea2.jpg" %}' );
             }
+            .container{
+                padding: 60px;
+            }
+            .main-container{
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-gap: 30px 10px;
+                font-size:14pt;
+                background-image: url('{% static "sea2.jpg" %}') ;
+                background-position: fixed;
+                background-repeat: no-repeat;
+                width:500px;
+                padding: 50px;
+                margin: auto;
+                border: 5px solid white;
+                border-radius: 20px;
+                box-shadow:2px 2px 6px 6px #171A2B ;
+                text-align: center;
+            }
 
     </style>
 
     </head>
     <body>
         <section>
-        <div>
-            <header>                                
-                <div class="jumbotron text-center" style="background-color: rgb(19, 242, 246);">
-                    <h1 class="display-4" style="color: rgb(10, 9, 9);">Space for ICAR Banner</h1>
-                </div>
-            </header>
+        <div>                              
+            <div class="jumbotron text-center" style="background-color: rgb(19, 242, 246);">
+                <h1 class="display-4" style="color: rgb(10, 9, 9);">Space for ICAR Banner</h1>
+            </div>
             <div class="container mt-5">
-                <h2 class="text-center alert alert-danger"> Function based View Modelform CRUD PROJECT</h2>
                 {% block content %}
             
                 {% endblock content %}

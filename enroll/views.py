@@ -1,12 +1,18 @@
 from django.shortcuts import render, HttpResponseRedirect
 from icarinternship import settings
 from .forms import StudentRegistration
+from .forms import BroodstockRegistration
 from .models import User
+from .models import broodstock
+
 
 # Create your views here.
 
 def datapage(request):
     return render(request,'enroll/datapage.html')
+
+def brood_data(request):
+    return render(request,'enroll/brooddata.html')
 
 # This Function will add new item and show all items
 def add_show(request):
@@ -25,6 +31,30 @@ def add_show(request):
         fm = StudentRegistration()
     stud = User.objects.all()
     return render(request, 'enroll/addandshow.html', {'form':fm, 'stu':stud})
+
+def brood_show(request):
+    if request.method == 'POST':
+        bs = BroodstockRegistration(request.POST)
+        if bs.is_valid():
+            bs.save()
+            bs = BroodstockRegistration()
+    else:
+        bs = BroodstockRegistration()
+    brood = broodstock.objects.all()
+    return render(request, 'enroll/brood.html', {'form':bs, 'btu':brood})
+
+        
+
+        
+
+
+
+
+
+
+
+
+
 
 # This Function will Delete
 def delete_data(request,id):
