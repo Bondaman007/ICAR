@@ -1,0 +1,45 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div style="margin-left: -35%;background-color: rgb(240, 234, 226);" >
+        <h4 class="text-center alert alert-info">Show Cliental Data</h4>
+        {% if clie %}
+            <table class="table table-hover">
+                <thead>
+                    <tr style="color: rgb(9, 10, 9);">
+                        <th scope="col">Id</th>
+                        <th scope="col">Hatchery_id</th>
+                        <th scope="col">Cliental</th>
+                        <th scope="col">Years</th>
+                        <th scope="col">Clients_Id</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cloop in clie %}                                     
+                        <tr>
+                            <th scope="row">{{cloop.id}}</th>
+                            <td>{{cloop.hatchery_id}}</td>
+                            <td>{{cloop.clients}}</td>
+                            <td>{{cloop.years}}</td>
+                            <td>{{cloop.clients_id}}</td>                            
+                            <td>
+                            <a href="{% url 'updateclientaldata' cloop.id %}" class="btn btn-warning btn-sm ">Edit</a>
+                            <form action="{% url 'deleteclientaldata' cloop.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h4 class="text-center alert alert-warning">No Records</h4>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}

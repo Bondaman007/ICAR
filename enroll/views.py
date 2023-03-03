@@ -4,6 +4,8 @@ from .forms import StudentRegistration
 from .forms import BroodstockRegistration
 from .models import User
 from .models import broodstock
+from .models import cliental
+from .forms import ClientalRegistration
 
 
 # Create your views here.
@@ -95,6 +97,47 @@ def update_data(request, id):
         fm = StudentRegistration(instance=pi)
     return render(request, 'enroll/updatestudent.html',{'form':fm})
 
+
+def cliental_data(request):
+    if request.method == 'POST':
+        clientvar = ClientalRegistration(request.POST)
+        if clientvar.is_valid():
+            clientvar.save()
+            clientvar = ClientalRegistration()
+    else:
+        clientvar = ClientalRegistration()
+    client = cliental.objects.all()
+    return render(request, 'enroll/clientaldata.html', {'form':clientvar, 'clie':client})
+
+def cliental_show(request):
+    if request.method == 'POST':
+        clientvar = ClientalRegistration(request.POST)
+        if clientvar.is_valid():
+            clientvar.save()
+            clientvar = ClientalRegistration()
+    else:
+        clientvar = ClientalRegistration()
+    client = cliental.objects.all()
+    return render(request, 'enroll/clientalshow.html', {'form':clientvar, 'clie':client}) 
+
+
+def updatecliental_data(request, id):
+    if request.method == 'POST':
+        clinst = cliental.objects.get(pk=id)
+        clientvar = ClientalRegistration(request.POST, instance=clinst)
+        if clientvar.is_valid():
+            clientvar.save()
+    else:
+        clinst = cliental.objects.get(pk=id)
+        clientvar = ClientalRegistration(instance=clinst)
+    return render(request, 'enroll/updateclientaldata.html',{'form':clientvar})
+
+
+def deletecliental_data(request,id):
+    if request.method == 'POST':
+        clinst = cliental.objects.get(pk=id)
+        clinst.delete()
+        return HttpResponseRedirect('/')
 
 def insert_sale(request):
     return render(request, 'enroll/sale.html')

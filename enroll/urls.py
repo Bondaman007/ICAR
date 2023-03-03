@@ -20,5 +20,16 @@ urlpatterns = [
     path('<int:id>/', views.updatebrood_data, name="updatebrooddata"),
     path('delete/<int:id>/', views.deletebrood_data, name="deletebrooddata"),
     path('delete/<int:id>/', views.delete_data, name="deletedata"),
-    path('<int:id>/', views.update_data, name="updatedata")
+    path('<int:id>/', views.update_data, name="updatedata"),
+
+    path('clientaldata',views.cliental_data, name="clientaldata"), 
+
+    path('<int:id>/', views.updatecliental_data, name="updateclientaldata"),
+
+    path('delete/<int:id>/', views.deletecliental_data, name="deleteclientaldata"),
+
+    path('clientalshow',views.cliental_show, name="clientalshow"),
+
+
+    
 ]
