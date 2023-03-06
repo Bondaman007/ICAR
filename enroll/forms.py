@@ -3,6 +3,8 @@ from django import forms
 from .models import User
 from .models import broodstock
 from .models import cliental
+from .models import cost
+
 
 class StudentRegistration(forms.ModelForm):
     class Meta:
@@ -20,4 +22,10 @@ class ClientalRegistration(forms.ModelForm):
     class Meta:
         model = cliental
         #fields = ['hatchery_id','clients','years','clients_id']
+        fields = "__all__"
+
+class CostRegistration(forms.ModelForm):
+    class Meta:
+        model = cost
+        #fields = ['hatchery_id','cost_spawn','cost_fry','cost_fingerling','cost_yearling']
         fields = "__all__"

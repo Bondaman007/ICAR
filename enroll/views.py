@@ -6,6 +6,9 @@ from .models import User
 from .models import broodstock
 from .models import cliental
 from .forms import ClientalRegistration
+from .forms import CostRegistration
+from .models import cost
+
 
 
 # Create your views here.
@@ -138,6 +141,49 @@ def deletecliental_data(request,id):
         clinst = cliental.objects.get(pk=id)
         clinst.delete()
         return HttpResponseRedirect('/')
+    
+
+
+
+def cost_data(request):
+    if request.method == 'POST':
+        costvar = CostRegistration(request.POST)
+        if costvar.is_valid():
+            costvar.save()
+            costvar = CostRegistration()
+    else:
+        costvar = CostRegistration()
+    cos = cost.objects.all()
+    return render(request, 'enroll/costdata.html', {'form':costvar, 'coss':cos})
+def cost_show(request):
+    if request.method == 'POST':
+        costvar = CostRegistration(request.POST)
+        if costvar.is_valid():
+            costvar.save()
+            costvar = CostRegistration()
+    else:
+        costvar = CostRegistration()
+    cos = cost.objects.all()
+    return render(request, 'enroll/costshow.html', {'form':costvar, 'coss':cos})
+
+def updatecost_data(request, id):
+    if request.method == 'POST':
+        check = cost.objects.get(pk=id)
+        costvar = CostRegistration(request.POST, instance=check)
+        if costvar.is_valid():
+            costvar.save()
+    else:
+        check = cost.objects.get(pk=id)
+        costvar = CostRegistration(instance=check)
+    return render(request, 'enroll/updatecostdata.html',{'form':costvar})
+
+def deletecost_data(request,id):
+    if request.method == 'POST':
+        check = cost.objects.get(pk=id)
+        check.delete()
+        return HttpResponseRedirect('/')
+
+
 
 def insert_sale(request):
     return render(request, 'enroll/sale.html')

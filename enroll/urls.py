@@ -23,12 +23,21 @@ urlpatterns = [
     path('<int:id>/', views.update_data, name="updatedata"),
 
     path('clientaldata',views.cliental_data, name="clientaldata"), 
-
-    path('<int:id>/', views.updatecliental_data, name="updateclientaldata"),
-
-    path('delete/<int:id>/', views.deletecliental_data, name="deleteclientaldata"),
-
+    path('/<int:id>/', views.updatecliental_data, name="updateclientaldata"),
+    path('/delete/<int:id>/', views.deletecliental_data, name="deleteclientaldata"),
     path('clientalshow',views.cliental_show, name="clientalshow"),
+
+
+
+
+    path('costdata',views.cost_data, name="costdata"), 
+    path('costshow',views.cost_show, name="costshow"),
+    path('/<int:id>/', views.updatecost_data, name="updatecostdata"),
+    path('/delete/<int:id>/', views.deletecost_data, name="deletecostdata"),
+
+
+
+
 
 
     
