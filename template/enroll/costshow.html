@@ -18,17 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for cst in coss %}                                     
+                    {% for cdt in coss %}                                     
                         <tr>
-                            <th scope="row">{{cst.id}}</th>
-                            <td>{{cst.hatchery_id}}</td>
-                            <td>{{cst.cost_Spawn}}</td>
-                            <td>{{cst.cost_fry}}</td>
-                            <td>{{cst.cost_fingerling}}</td>
-                            <td>{{cst.cost_yearling}}</td>
+                            <th scope="row">{{cdt.id}}</th>
+                            <td>{{cdt.hatchery_id}}</td>
+                            <td>{{cdt.cost_Spawn}}</td>
+                            <td>{{cdt.cost_fry}}</td>
+                            <td>{{cdt.cost_fingerling}}</td>
+                            <td>{{cdt.cost_yearling}}</td>
                             <td>
-                            <a href="{% url 'updatecostdata' cst.id %}" class="btn btn-warning btn-sm ">Edit</a>
-                            <form action="{% url 'deletecostdata' cst.id %}" method="post" class="d-inline">
+                            <a href="{% url 'updatecostdata' cdt.id %}" class="btn btn-warning btn-sm ">Edit</a>
+                            <form action="{% url 'deletecostdata' cdt.id %}" method="post" class="d-inline">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger" value="Delete">
                             </form>

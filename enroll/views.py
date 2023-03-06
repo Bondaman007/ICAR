@@ -8,6 +8,11 @@ from .models import cliental
 from .forms import ClientalRegistration
 from .forms import CostRegistration
 from .models import cost
+from .forms import ProductionRegistration
+from .models import production
+from .forms import HatcheryRegistration
+from .models import hatchery
+
 
 
 
@@ -34,6 +39,29 @@ def add_show(request):
         fm = StudentRegistration()
     stud = User.objects.all()
     return render(request, 'enroll/addandshow.html', {'form':fm, 'stu':stud})
+
+# This Function will Delete
+def delete_data(request,id):
+    if request.method == 'POST':
+        pi = User.objects.get(pk=id)
+        pi.delete()
+        return HttpResponseRedirect('/addandshow')
+    
+
+# This Function will Update/Edit
+
+def update_data(request, id):
+    if request.method == 'POST':
+        pi = User.objects.get(pk=id)
+        fm = StudentRegistration(request.POST, instance=pi)
+        if fm.is_valid():
+            fm.save()
+    else:
+        pi = User.objects.get(pk=id)
+        fm = StudentRegistration(instance=pi)
+    return render(request, 'enroll/updatestudent.html',{'form':fm})
+
+
 
 def brood_data(request):
     if request.method == 'POST':
@@ -78,27 +106,6 @@ def updatebrood_data(request, id):
         bs = BroodstockRegistration(instance=bi)
     return render(request, 'enroll/updatebrood.html',{'form':bs})
 
-
-# This Function will Delete
-def delete_data(request,id):
-    if request.method == 'POST':
-        pi = User.objects.get(pk=id)
-        pi.delete()
-        return HttpResponseRedirect('/')
-    
-
-# This Function will Update/Edit
-
-def update_data(request, id):
-    if request.method == 'POST':
-        pi = User.objects.get(pk=id)
-        fm = StudentRegistration(request.POST, instance=pi)
-        if fm.is_valid():
-            fm.save()
-    else:
-        pi = User.objects.get(pk=id)
-        fm = StudentRegistration(instance=pi)
-    return render(request, 'enroll/updatestudent.html',{'form':fm})
 
 
 def cliental_data(request):
@@ -155,6 +162,7 @@ def cost_data(request):
         costvar = CostRegistration()
     cos = cost.objects.all()
     return render(request, 'enroll/costdata.html', {'form':costvar, 'coss':cos})
+
 def cost_show(request):
     if request.method == 'POST':
         costvar = CostRegistration(request.POST)
@@ -182,6 +190,82 @@ def deletecost_data(request,id):
         check = cost.objects.get(pk=id)
         check.delete()
         return HttpResponseRedirect('/')
+
+
+def production_data(request):
+    if request.method == 'POST':
+        prodvar = ProductionRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = ProductionRegistration()
+    else:
+        prodvar = ProductionRegistration()
+    pro = production.objects.all()
+    return render(request, 'enroll/productiondata.html', {'form':prodvar, 'prod':pro})
+
+def production_show(request):
+    if request.method == 'POST':
+        prodvar = ProductionRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = ProductionRegistration()
+    else:
+        prodvar = ProductionRegistration()
+    pro = production.objects.all()
+    return render(request, 'enroll/productionshow.html', {'form':prodvar, 'prod':pro})
+
+def updateproduction_data(request, id):
+    if request.method == 'POST':
+        checkprod = production.objects.get(pk=id)
+        prodvar = ProductionRegistration(request.POST, instance=checkprod)
+        if prodvar.is_valid():
+            prodvar.save()
+    else:
+        checkprod = production.objects.get(pk=id)
+        prodvar = ProductionRegistration(instance=checkprod)
+    return render(request, 'enroll/updateproductiondata.html',{'form':prodvar})
+
+
+def deleteproduction_data(request,id):
+    if request.method == 'POST':
+        checkprod = production.objects.get(pk=id)
+        checkprod.delete()
+        return HttpResponseRedirect('/')
+
+
+
+def hatchery_data(request):
+    if request.method == 'POST':
+        prodvar = HatcheryRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = HatcheryRegistration()
+    else:
+        prodvar = HatcheryRegistration()
+    pro = hatchery.objects.all()
+    return render(request, 'enroll/hatcherydata.html', {'form':prodvar, 'prod':pro})
+
+def hatchery_show(request):
+    pro = hatchery.objects.all()
+    return render(request, 'enroll/hatcheryshow.html', {'prod':pro})
+
+def deletehatchery_data(request, id):
+    if request.method == 'POST':
+        delhat = hatchery.objects.get(pk=id)
+        delhat.delete()
+        return HttpResponseRedirect('/hatcheryshow')
+
+
+def updatehatchery_data(request, id):
+    if request.method == 'POST':
+        checkprod = hatchery.objects.get(pk=id)
+        prodvar = HatcheryRegistration(request.POST, instance=checkprod)
+        if prodvar.is_valid():
+            prodvar.save()
+    else:
+        checkprod = hatchery.objects.get(pk=id)
+        prodvar = HatcheryRegistration(instance=checkprod)
+    return render(request, 'enroll/updatehatcherydata.html',{'form':prodvar})
 
 
 

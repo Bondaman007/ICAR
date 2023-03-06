@@ -1,0 +1,16 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center alert alert-info"><u><strong></strong>Add Production Data</strong></u></h2>
+    <br><br>
+    <div class="main-container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

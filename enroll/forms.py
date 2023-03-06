@@ -4,6 +4,9 @@ from .models import User
 from .models import broodstock
 from .models import cliental
 from .models import cost
+from .models import production
+from .models import hatchery
+
 
 
 class StudentRegistration(forms.ModelForm):
@@ -29,3 +32,22 @@ class CostRegistration(forms.ModelForm):
         model = cost
         #fields = ['hatchery_id','cost_spawn','cost_fry','cost_fingerling','cost_yearling']
         fields = "__all__"
+
+
+class ProductionRegistration(forms.ModelForm):
+    class Meta:
+        model = production
+        #fields = ['hatchery_id','cost_spawn','cost_fry','cost_fingerling','cost_yearling']
+        fields = "__all__"
+
+class HatcheryRegistration(forms.ModelForm):
+    class Meta:
+        model = hatchery
+        #fields = ['hatchery_id','cost_spawn','cost_fry','cost_fingerling','cost_yearling']
+        fields = "__all__"
+
+
+
+
+
+        
