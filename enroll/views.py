@@ -84,7 +84,7 @@ def brood_show(request):
     else:
         bs = BroodstockRegistration()
     btud = broodstock.objects.all()
-    return render(request, 'enroll/brood.html', {'form':bs, 'btu':btud}) 
+    return render(request, 'enroll/broodshow.html', {'form':bs, 'btu':btud}) 
 
 # This Function will Delete Brood Data
 def deletebrood_data(request,id):
@@ -140,7 +140,7 @@ def updatecliental_data(request, id):
     else:
         clinst = cliental.objects.get(pk=id)
         clientvar = ClientalRegistration(instance=clinst)
-    return render(request, 'enroll/updateclientaldata.html',{'form':clientvar})
+    return render(request, 'enroll/updatecliental.html', {'form':clientvar})
 
 
 def deletecliental_data(request,id):
@@ -230,7 +230,7 @@ def deleteproduction_data(request,id):
     if request.method == 'POST':
         checkprod = production.objects.get(pk=id)
         checkprod.delete()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/productionshow')
 
 
 

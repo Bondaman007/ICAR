@@ -21,26 +21,28 @@ urlpatterns = [
     path('<int:id>/', views.update_data, name="updatedata"),
     path('delete/<int:id>/', views.delete_data, name="deletedata"),
 
-    path('brood',views.brood_show, name="broodshow"),
     path('brooddata',views.brood_data, name="brooddata"),
-    path('<int:id>/', views.updatebrood_data, name="updatebrooddata"),
-    path('delete/<int:id>/', views.deletebrood_data, name="deletebrooddata"),
+    path('broodshow',views.brood_show, name="broodshow"),
+    path('broodshow/<int:id>/', views.updatebrood_data, name="updatebrooddata"),
+    path('broodshow/delete/<int:id>/', views.deletebrood_data, name="deletebrooddata"),
 
     path('clientaldata',views.cliental_data, name="clientaldata"), 
-    path('/<int:id>/', views.updatecliental_data, name="updateclientaldata"),
-    path('/delete/<int:id>/', views.deletecliental_data, name="deleteclientaldata"),
+    path('clientalshow/<int:id>/', views.updatecliental_data, name="updateclientaldata"),
+    path('clientalshow/delete/<int:id>/', views.deletecliental_data, name="deleteclientaldata"),
     path('clientalshow',views.cliental_show, name="clientalshow"),
 
 
     path('costdata',views.cost_data, name="costdata"), 
     path('costshow',views.cost_show, name="costshow"),
-    path('/<int:id>/', views.updatecost_data, name="updatecostdata"),
-    path('/delete/<int:id>/', views.deletecost_data, name="deletecostdata"),
+    path('costshow/<int:id>/', views.updatecost_data, name="updatecostdata"),
+    path('costshow/delete/<int:id>/', views.deletecost_data, name="deletecostdata"),
 
 
     path('productiondata',views.production_data, name="productiondata"), 
     path('productionshow',views.production_show, name="productionshow"),
-    path('/<int:id>/', views.updateproduction_data, name="updateproductiondata"),
+    path('productionshow/<int:id>/', views.updateproduction_data, name="updateproductiondata"),
+    path('productionshow/delete/<int:id>/', views.deleteproduction_data, name="deleteproductiondata"),
+
 
 
     path('hatcherydata',views.hatchery_data, name="hatcherydata"),
