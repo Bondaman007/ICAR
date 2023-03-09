@@ -63,4 +63,11 @@ urlpatterns = [
     path('speciesshow/<int:id>/', views.updatespecies_data, name="updatespeciesdata"),
 
 
+    path('accreditationdata',views.accreditation_data, name="accreditationdata"),
+    path('accreditationshow',views.accreditation_show, name="accreditationshow"),
+    path('accreditationshow/<int:id>/', views.updateaccreditation_data, name="updateaccreditationdata"),
+    path('accreditationshow/delete/<int:id>/', views.deleteaccreditation_data, name="deleteaccreditationdata"),
+
+
+
 ]

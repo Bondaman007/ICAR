@@ -16,6 +16,9 @@ from .forms import SaleRegistration
 from .models import sale
 from .forms import SpeciesRegistration
 from .models import species
+from .forms import AccreditationRegistration
+from .models import Accreditation
+
 
 
 
@@ -341,6 +344,39 @@ def updatespecies_data(request, id):
     return render(request, 'enroll/updatespeciesdata.html',{'form':prodvar})
 
 
+
+def accreditation_data(request):
+    if request.method == 'POST':
+        prodvar = AccreditationRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = AccreditationRegistration()
+    else:
+        prodvar = AccreditationRegistration()
+    pro = Accreditation.objects.all()
+    return render(request, 'enroll/accreditationdata.html', {'form':prodvar, 'prod':pro})
+
+def accreditation_show(request):
+    pro = Accreditation.objects.all()
+    return render(request, 'enroll/accreditationshow.html', {'prod':pro})
+
+def deleteaccreditation_data(request, id):
+    if request.method == 'POST':
+        delhat = Accreditation.objects.get(pk=id)
+        delhat.delete()
+        return HttpResponseRedirect('/accreditationshow')
+
+
+def updateaccreditation_data(request, id):
+    if request.method == 'POST':
+        checkprod = Accreditation.objects.get(pk=id)
+        prodvar = AccreditationRegistration(request.POST, instance=checkprod)
+        if prodvar.is_valid():
+            prodvar.save()
+    else:
+        checkprod = Accreditation.objects.get(pk=id)
+        prodvar = AccreditationRegistration(instance=checkprod)
+    return render(request, 'enroll/updateaccreditationdata.html',{'form':prodvar})
 
 def insert_sale(request):
     return render(request, 'enroll/sale.html')

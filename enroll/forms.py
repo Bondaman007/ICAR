@@ -8,6 +8,7 @@ from .models import production
 from .models import hatchery
 from .models import sale
 from .models import species
+from .models import Accreditation
 
 
 
@@ -62,4 +63,7 @@ class SpeciesRegistration(forms.ModelForm):
         fields = "__all__"
 
 
-        
+class AccreditationRegistration(forms.ModelForm):
+    class Meta:
+        model = Accreditation
+        fields = "__all__"
