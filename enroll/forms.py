@@ -7,6 +7,7 @@ from .models import cost
 from .models import production
 from .models import hatchery
 from .models import sale
+from .models import species
 
 
 
@@ -52,6 +53,12 @@ class HatcheryRegistration(forms.ModelForm):
 class SaleRegistration(forms.ModelForm):
     class Meta:
         model = sale
+        fields = "__all__"
+
+
+class SpeciesRegistration(forms.ModelForm):
+    class Meta:
+        model = species
         fields = "__all__"
 
 

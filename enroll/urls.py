@@ -57,4 +57,10 @@ urlpatterns = [
     path('saleshow/<int:id>/', views.updatesale_data, name="updatesaledata"),
 
 
+    path('speciesdata',views.species_data, name="speciesdata"),
+    path('speciesshow',views.species_show, name="speciesshow"),
+    path('speciesshow/delete/<int:id>/', views.deletespecies_data, name="deletespeciesdata"),
+    path('speciesshow/<int:id>/', views.updatespecies_data, name="updatespeciesdata"),
+
+
 ]

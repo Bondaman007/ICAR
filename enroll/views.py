@@ -14,6 +14,9 @@ from .forms import HatcheryRegistration
 from .models import hatchery
 from .forms import SaleRegistration
 from .models import sale
+from .forms import SpeciesRegistration
+from .models import species
+
 
 
 
@@ -301,6 +304,42 @@ def updatesale_data(request, id):
         checkprod = sale.objects.get(pk=id)
         prodvar = SaleRegistration(instance=checkprod)
     return render(request, 'enroll/updatesaledata.html',{'form':prodvar})
+
+
+def species_data(request):
+    if request.method == 'POST':
+        prodvar = SpeciesRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = SpeciesRegistration()
+    else:
+        prodvar = SpeciesRegistration()
+    pro = species.objects.all()
+    return render(request, 'enroll/speciesdata.html', {'form':prodvar, 'prod':pro})
+
+def species_show(request):
+    pro = species.objects.all()
+    return render(request, 'enroll/speciesshow.html', {'prod':pro})
+
+
+def deletespecies_data(request, id):
+    if request.method == 'POST':
+        delhat = species.objects.get(pk=id)
+        delhat.delete()
+        return HttpResponseRedirect('/speciesshow')
+
+
+def updatespecies_data(request, id):
+    if request.method == 'POST':
+        checkprod = species.objects.get(pk=id)
+        prodvar = SpeciesRegistration(request.POST, instance=checkprod)
+        if prodvar.is_valid():
+            prodvar.save()
+    else:
+        checkprod = species.objects.get(pk=id)
+        prodvar = SpeciesRegistration(instance=checkprod)
+    return render(request, 'enroll/updatespeciesdata.html',{'form':prodvar})
+
 
 
 def insert_sale(request):
