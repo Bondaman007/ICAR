@@ -12,6 +12,8 @@ from .forms import ProductionRegistration
 from .models import production
 from .forms import HatcheryRegistration
 from .models import hatchery
+from .forms import SaleRegistration
+from .models import sale
 
 
 
@@ -267,6 +269,38 @@ def updatehatchery_data(request, id):
         prodvar = HatcheryRegistration(instance=checkprod)
     return render(request, 'enroll/updatehatcherydata.html',{'form':prodvar})
 
+
+def sale_data(request):
+    if request.method == 'POST':
+        prodvar = SaleRegistration(request.POST)
+        if prodvar.is_valid():
+            prodvar.save()
+            prodvar = SaleRegistration()
+    else:
+        prodvar = SaleRegistration()
+    pro = sale.objects.all()
+    return render(request, 'enroll/saledata.html', {'form':prodvar, 'prod':pro})
+
+def sale_show(request):
+    pro = sale.objects.all()
+    return render(request, 'enroll/saleshow.html', {'prod':pro})
+
+def deletesale_data(request, id):
+    if request.method == 'POST':
+        delhat = sale.objects.get(pk=id)
+        delhat.delete()
+        return HttpResponseRedirect('/saleshow')
+    
+def updatesale_data(request, id):
+    if request.method == 'POST':
+        checkprod = sale.objects.get(pk=id)
+        prodvar = SaleRegistration(request.POST, instance=checkprod)
+        if prodvar.is_valid():
+            prodvar.save()
+    else:
+        checkprod = sale.objects.get(pk=id)
+        prodvar = SaleRegistration(instance=checkprod)
+    return render(request, 'enroll/updatesaledata.html',{'form':prodvar})
 
 
 def insert_sale(request):

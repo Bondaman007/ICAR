@@ -6,6 +6,8 @@ from .models import cliental
 from .models import cost
 from .models import production
 from .models import hatchery
+from .models import sale
+
 
 
 
@@ -47,7 +49,10 @@ class HatcheryRegistration(forms.ModelForm):
         fields = "__all__"
 
 
-
+class SaleRegistration(forms.ModelForm):
+    class Meta:
+        model = sale
+        fields = "__all__"
 
 
         

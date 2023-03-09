@@ -51,4 +51,10 @@ urlpatterns = [
     path('hatcheryshow/<int:id>/', views.updatehatchery_data, name="updatehatcherydata"),
 
 
+    path('saledata',views.sale_data, name="saledata"),
+    path('saleshow',views.sale_show, name="saleshow"),
+    path('saleshow/delete/<int:id>/', views.deletesale_data, name="deletesaledata"),
+    path('saleshow/<int:id>/', views.updatesale_data, name="updatesaledata"),
+
+
 ]
